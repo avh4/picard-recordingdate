@@ -10,19 +10,13 @@ def script_variables_for_relation(rel):
         key_base + ':last': max(non_none, default=None),
     }
 
-def script_variables_for_track(track):
-    if track.get("recording"):
-        # It's a track from a release
-        recording = track["recording"]
-    else:
-        # It's a standalone recording
-        recording = track
+def script_variables_for_recording(recording):
     relations = recording["relations"]
     script_variables = dict(ChainMap(*map(script_variables_for_relation, relations)))
     return script_variables
 
-def add_track_metadata(metadata, track):
-    relations = script_variables_for_track(track)
+def add_recording_metadata(metadata, recording):
+    relations = script_variables_for_recording(recording)
     for rel, date in relations.items():
         metadata[rel] = date
     metadata["recordingdate"] = relations.get("~work:forward:performance:last")

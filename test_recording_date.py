@@ -1,12 +1,10 @@
 import unittest
 
-from recording_date import add_track_metadata
+from recording_date import add_recording_metadata
 
 def track_with_relation(relation):
     return {
-        "recording": {
-            "relations": [ relation ]
-        }
+        "relations": [ relation ],
     }
 
 class ScriptVariablesTest(unittest.TestCase):
@@ -20,7 +18,7 @@ class ScriptVariablesTest(unittest.TestCase):
             "begin": "1932-04-03",
             "end": "1932-04-04",
         })
-        add_track_metadata(metadata, track)
+        add_recording_metadata(metadata, track)
 
         self.assertEqual(metadata["~work:forward:performance:begin"], "1932-04-03")
         self.assertEqual(metadata["~work:forward:performance:end"], "1932-04-04")
@@ -37,7 +35,7 @@ class ScriptVariablesTest(unittest.TestCase):
             "begin": None,
             "end": None,
         })
-        add_track_metadata(metadata, track)
+        add_recording_metadata(metadata, track)
 
         self.assertEqual(metadata["~work:forward:performance:begin"], None)
         self.assertEqual(metadata["~work:forward:performance:end"], None)
@@ -54,7 +52,7 @@ class ScriptVariablesTest(unittest.TestCase):
             "begin": "1932-04-03",
             "end": None,
         })
-        add_track_metadata(metadata, track)
+        add_recording_metadata(metadata, track)
 
         self.assertEqual(metadata["~work:forward:performance:begin"], "1932-04-03")
         self.assertEqual(metadata["~work:forward:performance:end"], None)
@@ -71,7 +69,7 @@ class ScriptVariablesTest(unittest.TestCase):
             "begin": None,
             "end": "1932-04-04",
         })
-        add_track_metadata(metadata, track)
+        add_recording_metadata(metadata, track)
 
         self.assertEqual(metadata["~work:forward:performance:begin"], None)
         self.assertEqual(metadata["~work:forward:performance:end"], "1932-04-04")
@@ -93,7 +91,7 @@ class MetadataTest(unittest.TestCase):
                 }
             ]
         }
-        add_track_metadata(metadata, track)
+        add_recording_metadata(metadata, track)
 
         self.assertEqual(metadata["recordingdate"], "1932-04-04")
 
@@ -107,7 +105,7 @@ class MetadataTest(unittest.TestCase):
             "begin": "1932-04-03",
             "end": "1932-04-04",
         })
-        add_track_metadata(metadata, track)
+        add_recording_metadata(metadata, track)
 
         self.assertEqual(metadata["recordingdate"], "1932-04-04")
 
@@ -121,7 +119,7 @@ class MetadataTest(unittest.TestCase):
             "begin": "1932-04-03",
             "end": None,
         })
-        add_track_metadata(metadata, track)
+        add_recording_metadata(metadata, track)
 
         self.assertEqual(metadata["recordingdate"], "1932-04-03")
 
