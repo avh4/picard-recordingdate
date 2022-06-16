@@ -5,7 +5,7 @@ but also provides several additional variables for use in scripting.
 
 ## Metadata tags
 
-- `recordingdate`: Currently will be the value of the `%_work:forward:performance:last%` variable (see below).
+- `recordingdate`: Will be the first non-empty value of the following scripting variables (defined below) `%_work:forward:performance:last%`, `%_event:backward:recorded_at%`, `%_place:backward:recorded_at%`, `%_area:backward:recorded_in%`
 
 ## Scripting variables
 

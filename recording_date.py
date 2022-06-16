@@ -19,4 +19,8 @@ def add_recording_metadata(metadata, recording):
     relations = script_variables_for_recording(recording)
     for rel, date in relations.items():
         metadata[rel] = date
-    metadata["recordingdate"] = relations.get("~work:forward:performance:last")
+    metadata["recordingdate"] = \
+        relations.get("~work:forward:performance:last") \
+        or relations.get("~event:backward:recorded_at:last") \
+        or relations.get("~place:backward:recorded_at:last") \
+        or relations.get("~area:backward:recorded_in:last")
