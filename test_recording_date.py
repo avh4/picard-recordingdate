@@ -79,6 +79,24 @@ class ScriptVariablesTest(unittest.TestCase):
         self.assertEqual(metadata["~work:forward:performance:last"], "1932-04-04")
 
 class MetadataTest(unittest.TestCase):
+    def test_standalone_recording(self):
+        metadata = {}
+
+        track = {
+            "relations": [
+                {
+                    "target-type": "work",
+                    "type": "performance",
+                    "direction": "forward",
+                    "begin": "1932-04-03",
+                    "end": "1932-04-04",
+                }
+            ]
+        }
+        add_track_metadata(metadata, track)
+
+        self.assertEqual(metadata["recordingdate"], "1932-04-04")
+
     def test_performance_date(self):
         metadata = {}
 

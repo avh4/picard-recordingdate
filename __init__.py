@@ -7,7 +7,7 @@ but also provides several additional variables for use in scripting.
 Details at <a href="https://github.com/avh4/picard-recordingdate/#readme">https://github.com/avh4/picard-recordingdate/#readme</a>
 '''
 PLUGIN_VERSION = '0.1.0'
-PLUGIN_API_VERSIONS = ['2.7', '2.8']
+PLUGIN_API_VERSIONS = ['2.7']
 PLUGIN_LICENSE = "MIT"
 PLUGIN_LICENSE_URL = "https://opensource.org/licenses/MIT"
 

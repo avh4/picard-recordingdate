@@ -11,7 +11,13 @@ def script_variables_for_relation(rel):
     }
 
 def script_variables_for_track(track):
-    relations = track["recording"]["relations"]
+    if track.get("recording"):
+        # It's a track from a release
+        recording = track["recording"]
+    else:
+        # It's a standalone recording
+        recording = track
+    relations = recording["relations"]
     script_variables = dict(ChainMap(*map(script_variables_for_relation, relations)))
     return script_variables
 
