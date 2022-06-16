@@ -36,7 +36,7 @@ def process_track(album, metadata, track, release):
         config.setting["server_port"],
         "/ws/2/%s/%s" % ('recording', recording["id"]),
         on_result,
-        queryargs={"inc": "work-rels"},
+        queryargs={"inc": "area-rels+artist-rels+event-rels+place-rels+work-rels"},
     )
 
 register_track_metadata_processor(process_track)

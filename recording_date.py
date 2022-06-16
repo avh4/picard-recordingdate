@@ -1,7 +1,7 @@
 from collections import ChainMap
 
 def script_variables_for_relation(rel):
-    key_base = '~{}:{}:{}'.format(rel["target-type"], rel["direction"], rel["type"])
+    key_base = '~{}:{}:{}'.format(rel["target-type"], rel["direction"], rel["type"]).replace(' ', '_')
     non_none = list(filter(lambda x: x is not None, [rel["begin"], rel["end"]]))
     return {
         key_base + ':begin': rel["begin"],

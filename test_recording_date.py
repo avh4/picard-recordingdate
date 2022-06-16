@@ -76,6 +76,20 @@ class ScriptVariablesTest(unittest.TestCase):
         self.assertEqual(metadata["~work:forward:performance:first"], "1932-04-04")
         self.assertEqual(metadata["~work:forward:performance:last"], "1932-04-04")
 
+    def test_relationship_type_with_space(self):
+        metadata = {}
+
+        track = track_with_relation({
+            "target-type": "area",
+            "type": "recorded in",
+            "direction": "backward",
+            "begin": "1932-04-03",
+            "end": None,
+        })
+        add_recording_metadata(metadata, track)
+
+        self.assertEqual(metadata["~area:backward:recorded_in:begin"], "1932-04-03")
+
 class MetadataTest(unittest.TestCase):
     def test_standalone_recording(self):
         metadata = {}
